@@ -16,7 +16,7 @@ class WeatherRepositoryImpl(
 ) :
     BaseRepository(gson), WeatherRepository {
 
-    @Throws(Exception::class)
+    @Throws(Throwable::class)
     override fun getWeather(query: String?): WeatherList {
         val cache = cacheServices.getWeather(query)
         if (cache != null) {

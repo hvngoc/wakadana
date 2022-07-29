@@ -100,8 +100,10 @@ dependencies {
 //    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 //    implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
 
-    implementation "io.insert-koin:koin-core:3.0.1"
-    implementation "io.insert-koin:koin-android:3.0.1"
-    implementation "io.insert-koin:koin-android-ext:3.0.1"
-    testImplementation "io.insert-koin:koin-test:3.0.1"
+    implementation "io.insert-koin:koin-core:3.1.4"
+    implementation "io.insert-koin:koin-android:3.1.4"
+    testImplementation "io.insert-koin:koin-test:3.1.4"
+
+    implementation "com.airbnb.android:epoxy:4.6.4"
+    kapt "com.airbnb.android:epoxy-processor:4.6.4"
 }

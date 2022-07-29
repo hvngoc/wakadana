@@ -8,5 +8,5 @@ import org.koin.dsl.module
  * Created by hvngoc on 7/29/22
  */
 val repositoryModule = module {
-    single<WeatherRepository> { WeatherRepositoryImpl(get(), get()) }
+    single<WeatherRepository> { WeatherRepositoryImpl(get(), get(), get()) }
 }

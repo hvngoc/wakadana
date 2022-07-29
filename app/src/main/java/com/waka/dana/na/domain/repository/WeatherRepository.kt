@@ -7,6 +7,6 @@ import com.waka.dana.na.domain.model.WeatherList
  */
 interface WeatherRepository {
 
-    @Throws(Exception::class)
+    @Throws(Throwable::class)
     fun getWeather(query: String?): WeatherList
 }

@@ -10,7 +10,7 @@ import retrofit2.Response
  */
 abstract class BaseRepository(private val gson: Gson) {
 
-    @Throws(Exception::class)
+    @Throws(Throwable::class)
     protected fun <T> networkTransform(response: Response<T?>): T {
         if (response.isSuccessful) {
             response.body()?.let {
