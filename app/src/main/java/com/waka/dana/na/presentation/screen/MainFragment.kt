@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,6 +20,7 @@ import com.waka.dana.na.presentation.base.MasterEpoxyBuilder
 import com.waka.dana.na.presentation.screen.holder.ChildEpoxyModel_
 import com.waka.dana.na.util.HumanUtil
 import com.waka.dana.na.util.visibleIf
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinComponent
 
@@ -54,7 +56,6 @@ class MainFragment : Fragment(), KoinComponent, MasterEpoxyBuilder {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
 
         showContent(empty = true)
         binding.recyclerView.setController(controller)
@@ -82,6 +83,7 @@ class MainFragment : Fragment(), KoinComponent, MasterEpoxyBuilder {
                 }
                 is DataResult.Error -> {
                     showContent(error = true)
+                    binding.error.text = it.e.message ?: getString(R.string.error_default)
                 }
             }
         }

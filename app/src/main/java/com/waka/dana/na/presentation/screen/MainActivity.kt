@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity(), KoinComponent {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
 
-        replaceFragment(R.id.container, MainFragment.newInstance(), MainFragment.TAG)
+        val fragment = supportFragmentManager.findFragmentByTag(MainFragment.TAG)
+        if (fragment == null) {
+            replaceFragment(R.id.container, MainFragment.newInstance(), MainFragment.TAG)
+        }
     }
 }
