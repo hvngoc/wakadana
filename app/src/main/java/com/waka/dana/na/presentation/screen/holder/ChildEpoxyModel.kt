@@ -31,6 +31,9 @@ abstract class ChildEpoxyModel :
     @EpoxyAttribute
     var description: String? = null
 
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    var onClick: (() -> Unit)? = null
+
     override fun bind(holder: ChildHolder) {
         val context = holder.binding.root.context
         holder.binding.date.text = context.getString(R.string.date, date)
@@ -38,6 +41,9 @@ abstract class ChildEpoxyModel :
         holder.binding.pressure.text = context.getString(R.string.pressure, pressure)
         holder.binding.humidity.text = context.getString(R.string.humidity, humidity)
         holder.binding.description.text = context.getString(R.string.description, description)
+        holder.binding.conHeo.setOnClickListener {
+            onClick?.invoke()
+        }
     }
 
     class ChildHolder : EpoxyHolder() {

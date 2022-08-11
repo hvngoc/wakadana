@@ -2,7 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data />
+    <data >
+        <variable
+            name="lastQuery"
+            type="androidx.lifecycle.MutableLiveData&lt;String&gt;" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,6 +16,8 @@
             android:id="@+id/edit_text"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:text="@={lastQuery}"
+            android:hint="Gõ gì zô đây đi a huy"
             app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout

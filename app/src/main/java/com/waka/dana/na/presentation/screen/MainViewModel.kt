@@ -1,5 +1,6 @@
 package com.waka.dana.na.presentation.screen
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,13 +21,14 @@ class MainViewModel(private val useCase: GetListWeatherByNameUseCase) : ViewMode
         _data.value = DataResult.Error(error)
     }
 
-    var lastQuery: String? = null
+    var lastQuery: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
 
     private val _data = MutableLiveData<DataResult>()
     val data: LiveData<DataResult> = _data
 
     fun loadData(query: String?) {
         viewModelScope.launch(Dispatchers.Main + exceptionHandler) {
+            Log.i("heoheoheo", "call load data")
             useCase.execute(query, {
                 _data.value = it
             }, {
@@ -34,4 +36,6 @@ class MainViewModel(private val useCase: GetListWeatherByNameUseCase) : ViewMode
             })
         }
     }
+
+    fun getData(): DataResult? = _data.value
 }
