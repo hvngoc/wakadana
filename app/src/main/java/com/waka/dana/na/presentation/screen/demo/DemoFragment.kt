@@ -1,9 +1,11 @@
 package com.waka.dana.na.presentation.screen.demo
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -50,6 +52,16 @@ class DemoFragment : Fragment(), KoinComponent, MasterEpoxyBuilder {
                 LinearLayout.VERTICAL
             )
         )
+
+        binding.buttonSave.setOnClickListener {
+            val text = binding.editText.text.toString()
+            mainViewModel.putNewType(text)
+            binding.editText.setText("")
+
+            val imm =
+                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+            imm?.hideSoftInputFromWindow(binding.editText.windowToken, 0)
+        }
         return binding.root
     }
 
@@ -58,6 +70,9 @@ class DemoFragment : Fragment(), KoinComponent, MasterEpoxyBuilder {
         mainViewModel.loadData()
         mainViewModel.data.observe(viewLifecycleOwner) {
             when (it) {
+                is DataResult.Loading -> {
+                    showContent(loading = true)
+                }
                 is DataResult.Success<*> -> {
                     showContent(content = true)
                     controller.requestModelBuild()

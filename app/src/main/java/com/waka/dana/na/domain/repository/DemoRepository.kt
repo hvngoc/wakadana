@@ -9,4 +9,7 @@ interface DemoRepository {
 
     @Throws(Throwable::class)
     fun getListDemo(): DemoResult
+
+    @Throws(Throwable::class)
+    fun putNewTypes(type: String): DemoResult
 }

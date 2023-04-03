@@ -77,6 +77,9 @@ class MainFragment : Fragment(), KoinComponent, MasterEpoxyBuilder {
         }
         mainViewModel.data.observe(viewLifecycleOwner) {
             when (it) {
+                is DataResult.Loading -> {
+                    showContent(loading = true)
+                }
                 is DataResult.Success<*> -> {
                     showContent(content = true)
                     controller.requestModelBuild()

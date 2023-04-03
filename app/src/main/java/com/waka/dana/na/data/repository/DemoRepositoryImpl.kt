@@ -2,6 +2,7 @@ package com.waka.dana.na.data.repository
 
 import com.google.gson.Gson
 import com.waka.dana.na.data.services.DemoServices
+import com.waka.dana.na.domain.model.DemoParam
 import com.waka.dana.na.domain.model.DemoResult
 import com.waka.dana.na.domain.repository.DemoRepository
 
@@ -20,4 +21,11 @@ class DemoRepositoryImpl(
         val data = networkTransform(raw)
         return data
     }
+
+    override fun putNewTypes(type: String): DemoResult {
+        val raw = demoServices.addNewType(DemoParam(type)).execute()
+        val data = networkTransform(raw)
+        return data
+    }
+
 }

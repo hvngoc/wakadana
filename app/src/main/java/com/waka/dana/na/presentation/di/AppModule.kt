@@ -13,5 +13,5 @@ val appModule = module {
     single { Gson() }
 
     viewModel { MainViewModel(get()) }
-    viewModel { DemoViewModel(get()) }
+    viewModel { DemoViewModel(get(), get()) }
 }

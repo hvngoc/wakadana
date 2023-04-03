@@ -6,4 +6,6 @@ package com.waka.dana.na.domain.response
 sealed class DataResult {
     class Success<T>(val data: T?) : DataResult()
     class Error(val e: Throwable) : DataResult()
+
+    object Loading : DataResult()
 }

@@ -31,6 +31,7 @@ internal fun provideOkHttp(): OkHttpClient {
             val original = chain.request()
             val requestBuilder = original.newBuilder()
             requestBuilder.addHeader("Connection", "keep-alive")
+            requestBuilder.addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsIm5iZiI6MTY4MDUwNjI5NSwicm9sZXMiOltdLCJpc3MiOiJhdXRoLXNlcnZpY2UiLCJsYW5ndWFnZUlkIjoxLCJleHAiOjE2ODA1MDY4OTUsImlhdCI6MTY4MDUwNjI5NSwidXNlcklkIjoxfQ.tpLqBX8GZWvpz30Xwk1UTeIt4OewyuQ-YxHjKa1AFoQ")
             val request = requestBuilder.build()
             chain.proceed(request)
         }
