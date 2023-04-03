@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/no_result"
-                android:textColor="#F00"
+                android:textColor="#0FF"
                 android:textSize="20sp"
                 android:visibility="gone" />
 
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/error_default"
-                android:textColor="#FF0"
+                android:textColor="#F00"
                 android:textSize="20sp"
                 android:visibility="gone" />
 
