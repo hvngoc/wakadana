@@ -1,5 +1,6 @@
 package com.waka.dana.na.domain.di
 
+import com.waka.dana.na.domain.usecase.GetListDemoUseCase
 import com.waka.dana.na.domain.usecase.GetListWeatherByNameUseCase
 import org.koin.dsl.module
 
@@ -8,4 +9,5 @@ import org.koin.dsl.module
  */
 val useCaseModule = module {
     single<GetListWeatherByNameUseCase> { GetListWeatherByNameUseCase(get()) }
+    single<GetListDemoUseCase> { GetListDemoUseCase(get()) }
 }
